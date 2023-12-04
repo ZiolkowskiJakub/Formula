@@ -22,6 +22,15 @@
                 }
             }
 
+            if (value_Temp.StartsWith(Operator.Array_Start))
+            {
+                index = value_Temp.IndexOf(Operator.Array_End, 0, true);
+                if (index != -1)
+                {
+                    return global::Formula.ExpressionType.Array;
+                }
+            }
+
             index = value_Temp.IndexOf(Operator.Formula_Start, 0, true);
             if (index > 1)
             {

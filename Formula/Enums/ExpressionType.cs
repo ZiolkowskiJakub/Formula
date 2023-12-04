@@ -5,6 +5,7 @@
         Undefined,
         Formula,
         Parameter,
-        Operation
+        Operation,
+        Array
     }
 }

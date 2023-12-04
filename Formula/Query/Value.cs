@@ -31,6 +31,9 @@ namespace Formula
                 case global::Formula.ExpressionType.Parameter:
                     return Value_Parameter(@in, out @out);
 
+                case global::Formula.ExpressionType.Array:
+                    return Value_Array(@in, out @out);
+
                 default:
                     return null;
 
@@ -133,6 +136,32 @@ namespace Formula
             }
 
             int index_End = @in.IndexOf(Operator.Parameter_End, index_Start, true);
+            if (index_End == -1)
+            {
+                return null;
+            }
+
+            @out = @in.Substring(index_End + 1);
+
+            return @in.Substring(0, index_End + 1);
+        }
+
+        private static string? Value_Array(string @in, out string? @out)
+        {
+            @out = null;
+
+            if (string.IsNullOrWhiteSpace(@in))
+            {
+                return null;
+            }
+
+            int index_Start = @in.IndexOf(Operator.Array_Start, 0, true);
+            if (index_Start == -1)
+            {
+                return null;
+            }
+
+            int index_End = @in.IndexOf(Operator.Array_End, index_Start, true);
             if (index_End == -1)
             {
                 return null;

@@ -24,6 +24,10 @@
                 case ExpressionType.Parameter:
                     result = new Parameter(expressionString);
                     break;
+
+                case ExpressionType.Array:
+                    result = new Array(expressionString);
+                    break;
             }
 
             return result;
