@@ -34,14 +34,14 @@ namespace Formula
 
             if (!hasEnumerable)
             {
-                result = string.Join(string.Empty, values_Temp.ConvertAll(x => x.ToString()));
+                result = string.Join(string.Empty, values_Temp.ConvertAll(x => x?.ToString()));
                 return true;
             }
 
-            List<List<object?>?> lists = new List<List<object?>>();
+            List<List<object?>?> lists = new List<List<object?>?>();
             for (int i = 0; i < values_Temp.Count; i++)
             {
-                List<object?>? list = Query.Repeat(values_Temp[i], max);
+                List<object?>? list = Repeat(values_Temp[i], max);
                 lists.Add(list);
             }
 
@@ -49,12 +49,12 @@ namespace Formula
             for (int i = 0; i < max; i++)
             {
                 List<object?> values_Updated = new List<object?>();
-                foreach (List<object?> list in lists)
+                foreach (List<object?>? list in lists)
                 {
-                    values_Updated.Add(list[i]);
+                    values_Updated.Add(list?[i]);
                 }
 
-                values_Temp.Add(string.Join(string.Empty, values_Updated.ConvertAll(x => x.ToString())));
+                values_Temp.Add(string.Join(string.Empty, values_Updated.ConvertAll(x => x?.ToString())));
             }
 
             result = values_Temp;

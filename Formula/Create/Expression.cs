@@ -35,7 +35,24 @@
 
         public static Expression? Expression(string? text)
         {
-            return Expression(text, out string? @out);
+            string? text_Temp = text?.Trim();
+            if(string.IsNullOrWhiteSpace(text_Temp))
+            {
+                return null;
+            }
+
+            Expression? result = Expression(text_Temp, out string? @out);
+            if(result == null)
+            {
+                return null;
+            }
+
+            if(result.Text != text_Temp)
+            {
+                result = new Operation(text_Temp);
+            }
+
+            return result;
         }
     }
 }

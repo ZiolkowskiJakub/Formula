@@ -33,7 +33,7 @@ namespace Formula
             }
 
             List<object?> result = new List<object?>();
-            foreach (Expression expression_Temp in expressions)
+            foreach (Expression? expression_Temp in expressions)
             {
                 object? value = null;
                 if (expression_Temp != null)

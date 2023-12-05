@@ -2,6 +2,6 @@
 {
     public interface IFormulaObject
     {
-        bool TryGetValue(string propertyName, out object value);
+        bool TryGetValue(string? propertyName, out object? value);
     }
 }

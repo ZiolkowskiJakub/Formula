@@ -61,16 +61,19 @@ namespace FormulaTest
             //}
 
             FormulaCalculator formulaManager = new FormulaCalculator();
-
+            //text = "=UPPER(\"aaa\")";
             //text = "=[ZONE AREA] * 2 * {1.05, 1.10}";
-            text = "=IF(2<3; [ZONE AREA] * 10; 20)";
+            //text = "=IF(2<1; [ZONE AREA] * 10; 20)";
+            //text = "=[ZONE AREA] * LOOKUP([FLOOR COVERING]; {\"Thin natural stone\", \"Thick natural stone\"}; {1.05, 1.10}; 0)";
+            text = "=LOOKUP(UPPER([FLOOR COVERING]); UPPER({\"Thin natural stone\", \"Thick natural stone\"}); {1.05 * [ZONE AREA], 1.10 * [ZONE AREA]}; 0)";
+
             command = Create.Command(text);
             if(command.TryGetValue(new TestObject(), out object result))
             {
 
             }
 
-            Query.Value("[Some Parameter] * 10", out string @out, out ExpressionType expressionType);
+            //Query.Value("[Some Parameter] * 10", out string @out, out ExpressionType expressionType);
         }
     }
 }

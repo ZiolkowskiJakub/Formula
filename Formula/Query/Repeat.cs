@@ -4,7 +4,7 @@ namespace Formula
 {
     public static partial class Query
     {
-        public static List<object?>? Repeat(object @object, int count)
+        public static List<object?>? Repeat(object? @object, int count)
         {
             if(count == -1)
             {

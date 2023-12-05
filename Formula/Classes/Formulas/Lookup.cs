@@ -14,7 +14,19 @@ namespace Formula
             int index = -1;
             for (int i = 0; i < input.Count(); i++)
             {
-                if (input.ElementAt(i) == value)
+                object? value_Temp = input.ElementAt(i);
+                if (value_Temp == null && value == null)
+                {
+                    index = i;
+                    break;
+                }
+
+                if (value_Temp == null || value == null)
+                {
+                    continue;
+                }
+
+                if (value_Temp.Equals(value))
                 {
                     index = i;
                     break;

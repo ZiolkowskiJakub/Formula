@@ -2,7 +2,7 @@
 {
     public static partial class Create
     {
-        public static List<Expression> Expressions(string text)
+        public static List<Expression?>? Expressions(string text)
         {
             if(string.IsNullOrWhiteSpace(text))
             {
@@ -36,9 +36,9 @@
             return result;
         }
 
-        public static List<Expression> Expressions(string text, char start, char end, char separator)
+        public static List<Expression?>? Expressions(string text, char start, char end, char separator)
         {
-            List<Expression> result = new List<Expression>();
+            List<Expression?>? result = new List<Expression?>();
 
             int index_Separator;
 

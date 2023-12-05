@@ -1,25 +1,23 @@
 ﻿using System.Collections;
-using System.Data;
 
 namespace Formula
 {
     public static partial class Query
     {
-        public static object? Compute(object? @object)
+        public static object? Evaluate(object? @object)
         {
             if(@object == null)
             {
                 return null;
             }
 
-            DataTable dataTable = new DataTable();
-
             if(@object is string)
             {
-                object result = null;
+                object? result = null;
                 try
                 {
-                    result = dataTable.Compute((string)@object, null);
+                    NCalc.Expression expression = new NCalc.Expression((string)@object);
+                    result = expression.Evaluate();
                 }
                 catch
                 {
@@ -40,7 +38,8 @@ namespace Formula
                     {
                         try
                         {
-                            @object_Result = dataTable.Compute((string)@object_Temp, null);
+                            NCalc.Expression expression = new NCalc.Expression((string)@object);
+                            @object_Result = expression.Evaluate();
                         }
                         catch
                         {

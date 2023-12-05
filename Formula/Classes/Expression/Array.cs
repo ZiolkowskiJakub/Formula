@@ -9,7 +9,7 @@
 
         }
 
-        public override List<Expression>? GetExpressions()
+        public override List<Expression?>? GetExpressions()
         {
             if (string.IsNullOrWhiteSpace(Text) || Text.Length < 2)
             {
@@ -21,7 +21,7 @@
             return Create.Expressions(text_Temp, Operator.Array_Start, Operator.Array_End, Operator.Array_Separartor);
         }
 
-        public override bool TryGetValue(IFormulaObject formulaObject, out object result)
+        public override bool TryGetValue(IFormulaObject formulaObject, out object? result)
         {
             result = null;
 
@@ -40,7 +40,7 @@
 
             foreach (Expression expression in expressions)
             {
-                object value = null;
+                object? value = null;
 
                 if (expression != null)
                 {

@@ -14,7 +14,9 @@ namespace Formula
                 return null;
             }
 
-            expressionType = ExpressionType(@in);
+            string @in_Temp = @in.TrimStart();
+
+            expressionType = ExpressionType(@in_Temp);
             if (expressionType == global::Formula.ExpressionType.Undefined)
             {
                 return null;
@@ -23,16 +25,16 @@ namespace Formula
             switch (expressionType)
             {
                 case global::Formula.ExpressionType.Operation:
-                    return Value_Operation(@in, out @out);
+                    return Value_Operation(@in_Temp, out @out);
 
                 case global::Formula.ExpressionType.Formula:
-                    return Value_Formula(@in, out @out);
+                    return Value_Formula(@in_Temp, out @out);
 
                 case global::Formula.ExpressionType.Parameter:
-                    return Value_Parameter(@in, out @out);
+                    return Value_Parameter(@in_Temp, out @out);
 
                 case global::Formula.ExpressionType.Array:
-                    return Value_Array(@in, out @out);
+                    return Value_Array(@in_Temp, out @out);
 
                 default:
                     return null;

@@ -6,9 +6,9 @@ namespace Formula
     {
         private static FormulaCalculator formulaCalculator = new FormulaCalculator();
 
-        public static MethodInfo? FindMethodInfo(string name, List<object?>? parameters = null)
+        public static bool TryGetValue(string name, List<object?>? parameters, out object? value)
         {
-            return formulaCalculator?.FindMethodInfo(name, parameters);
+            return formulaCalculator.TryGetValue(name, parameters, out value);
         }
     }
 }

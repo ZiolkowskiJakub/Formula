@@ -16,7 +16,7 @@
             if(value_Temp.StartsWith(Operator.Parameter_Start))
             {
                 index = value_Temp.IndexOf(Operator.Parameter_End, 0, true);
-                if(index != -1)
+                if (index != -1)
                 {
                     return global::Formula.ExpressionType.Parameter;
                 }
