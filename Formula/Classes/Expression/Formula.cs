@@ -1,4 +1,6 @@
-﻿namespace Formula
+﻿using System.Reflection;
+
+namespace Formula
 {
 
     public class Formula : Expression
@@ -60,51 +62,27 @@
 
             string text_Temp = Text.Substring(index_Start + 1, Text.Length - index_Start - 2);
 
-            List<Expression> result = new List<Expression>();
+            return Create.Expressions(text_Temp, Operator.Formula_Start, Operator.Formula_End, Operator.Formula_Separartor);
+        }
 
-
-            int index_Separator;
-
-            do
+        public override bool TryGetValue(IFormulaObject formulaObject, out object result)
+        {
+            List<Expression>? expressions = GetExpressions();
+            if (expressions == null)
             {
-                index_Separator = 0;
+                return Query.TryParse(Text, out result);
+            }
 
-                int count_Start = -1;
-                int count_End = -1;
-                do
-                {
-                    index_Separator = text_Temp.IndexOf(Operator.Formula_Separartor, index_Separator + 1, true);
+            List<object?>? values = expressions.Values(formulaObject);
 
-                    count_End = Query.Count(text_Temp, Operator.Formula_End, 0, index_Separator + 1, true);
+            MethodInfo? methodInfo = CommandManager.FindMethodInfo(Name, values);
+            if(methodInfo == null)
+            {
+                result = null;
+                return false;
+            }
 
-                    count_Start = Query.Count(text_Temp, Operator.Formula_Start, 0, index_Separator + 1, true);
-
-
-                } while (index_Separator != -1 && count_Start != count_End);
-
-                string expressionString = text_Temp.Substring(0, index_Separator);
-
-                Expression expression_Temp = Create.Expression(expressionString);
-                if (expression_Temp != null)
-                {
-                    result.Add(expression_Temp);
-                }
-
-                text_Temp = text_Temp.Substring(index_Separator + 1);
-
-                index_Separator = text_Temp.IndexOf(Operator.Formula_Separartor, 0, true);
-                if(index_Separator == -1)
-                {
-                    expression_Temp = Create.Expression(text_Temp);
-                    if (expression_Temp != null)
-                    {
-                        result.Add(expression_Temp);
-                    }
-                }
-
-            } while (index_Separator != -1);
-
-            return result;
+            return base.TryGetValue(formulaObject, out result);
         }
     }
 }

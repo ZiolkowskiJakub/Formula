@@ -45,19 +45,30 @@ namespace FormulaTest
 
             //text = "=IF(IF(2<3; True; False); [Some Parameter] * 10; 5)";
             //text = "=IF([Some Parameter] * 10; 5)";
-            text = "=[ZONE AREA] * LOOKUP([FLOOR COVERING]; {\"Thin natural stone\", \"Thick natural stone\"}; {1.05, 1.10}; 0)";
+            //text = "=[ZONE AREA] * LOOKUP([FLOOR COVERING]; {\"Thin natural stone\", \"Thick natural stone\"}; {1.05, 1.10}; 0)";
+
+            //text = "={\"Thin natural stone\", \"Thick natural stone\"}";
+
+            //command = Create.Command(text);
+            //expressions = command.GetExpressions();
+
+            //if (expressions != null && expressions.Count > 0)
+            //{
+            //    foreach (Formula.Expression expression in expressions)
+            //    {
+            //        List<Formula.Expression> expressions_Temp = expression?.GetExpressions();
+            //    }
+            //}
+
+            FormulaCalculator formulaManager = new FormulaCalculator();
+
+            //text = "=[ZONE AREA] * 2 * {1.05, 1.10}";
+            text = "=IF(2<3; [ZONE AREA] * 10; 20)";
             command = Create.Command(text);
-            expressions = command.GetExpressions();
-
-            if (expressions != null && expressions.Count > 0)
+            if(command.TryGetValue(new TestObject(), out object result))
             {
-                foreach (Formula.Expression expression in expressions)
-                {
-                    List<Formula.Expression> expressions_Temp = expression?.GetExpressions();
-                }
+
             }
-
-
 
             Query.Value("[Some Parameter] * 10", out string @out, out ExpressionType expressionType);
         }

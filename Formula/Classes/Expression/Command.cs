@@ -1,4 +1,6 @@
-﻿namespace Formula
+﻿using System.Data;
+
+namespace Formula
 {
     public class Command : Expression
     {
@@ -15,9 +17,30 @@
                 return null;
             }
 
-            string text_Tmep = Text.Substring(1);
+            string text_Temp = Text.Substring(1);
 
-            return Create.Expressions(text_Tmep);
+            return Create.Expressions(text_Temp);
+        }
+
+        public override bool TryGetValue(IFormulaObject formulaObject, out object result)
+        {
+            result = null;
+
+            List<Expression>? expressions = GetExpressions();
+            if (expressions == null)
+            {
+                return Query.TryParse(Text, out result);
+            }
+
+            List<object?> values = expressions.Values(formulaObject);
+
+            if(! Query.TryGetValue(values, out result))
+            {
+                return false;
+            }
+
+            result = Query.Compute(result);
+            return true;
         }
     }
 }

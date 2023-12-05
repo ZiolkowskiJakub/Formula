@@ -7,7 +7,7 @@
 
         public Expression(string text)
         {
-            this.Text = text.Trim();
+            Text = text.Trim();
         }
 
         public virtual List<Expression>? GetExpressions()
@@ -18,6 +18,21 @@
         public override string ToString()
         {
             return Text?.ToString();
+        }
+
+        public virtual bool TryGetValue(IFormulaObject formulaObject, out object result)
+        {
+            result = null;
+
+            List<Expression>? expressions = GetExpressions();
+            if (expressions == null)
+            {
+                return Query.TryParse(Text, out result);
+            }
+
+            List<object?> values = expressions.Values(formulaObject);
+
+            return Query.TryGetValue(values, out result);
         }
     }
 }

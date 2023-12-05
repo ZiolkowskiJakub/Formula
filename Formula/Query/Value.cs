@@ -51,16 +51,23 @@ namespace Formula
 
             int index_Formula = @in.IndexOf(Operator.Formula_Start, 0, true);
             int index_Parameter = @in.IndexOf(Operator.Parameter_Start, 0, true);
+            int index_Array = @in.IndexOf(Operator.Array_Start, 0, true);
 
-            if(index_Formula == -1 && index_Parameter == -1)
+            if (index_Formula == -1 && index_Parameter == -1 && index_Array == -1)
             {
                 return @in;
             }
 
-            if(index_Parameter < index_Formula && index_Parameter != -1)
+            if(index_Parameter != -1 && (index_Formula == -1 ||  index_Parameter < index_Formula) && (index_Array == -1 || index_Parameter < index_Array))
             {
                 @out = @in.Substring(index_Parameter);
                 return @in.Substring(0, index_Parameter);
+            }
+
+            if (index_Array != -1 && (index_Formula == -1 || index_Array < index_Formula) && (index_Parameter == -1 || index_Array < index_Parameter))
+            {
+                @out = @in.Substring(index_Array);
+                return @in.Substring(0, index_Array);
             }
 
             string prefix = @in.Substring(0, index_Formula);

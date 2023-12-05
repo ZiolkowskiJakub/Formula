@@ -19,7 +19,7 @@
 
         private string GetName()
         {
-            if(string.IsNullOrEmpty(Text) || Text.Length > 3)
+            if(string.IsNullOrEmpty(Text) || Text.Length < 3)
             {
                 return null;
             }
@@ -29,6 +29,17 @@
         public override List<Expression>? GetExpressions()
         {
             return null;
+        }
+
+        public override bool TryGetValue(IFormulaObject formulaObject, out object result)
+        {
+            result = null;
+            if(formulaObject == null)
+            {
+                return false;
+            }
+
+            return formulaObject.TryGetValue(Name, out result);
         }
     }
 }

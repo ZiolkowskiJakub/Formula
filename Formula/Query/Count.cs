@@ -1,4 +1,6 @@
-﻿namespace Formula
+﻿using System.Collections;
+
+namespace Formula
 {
     public static partial class Query
     {
@@ -32,6 +34,34 @@
             }
 
             return result;
+        }
+
+        public static int Count(object @object, out bool isEnumerable)
+        {
+            isEnumerable = false;
+            if(@object == null)
+            {
+                return -1;
+            }
+
+            if(!(@object is IEnumerable && !(@object is string)))
+            {
+                return 1;
+            }
+
+            int result = 0;
+            foreach(object @object_Temp in (IEnumerable)@object)
+            {
+                result++;
+            }
+
+            isEnumerable = true;
+            return result;
+        }
+
+        public static int Count(object @object)
+        {
+            return Count(@object, out bool isEnumerable);
         }
     }
 }
