@@ -1,10 +1,11 @@
-﻿using System.Reflection.Metadata.Ecma335;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Formula
 {
     public static partial class Formulas
     {
-        public static object? Lookup(object? value, IEnumerable<object>? input, IEnumerable<object>? output, object? notFoundValue)
+        public static object? Lookup(object value, IEnumerable<object> input, IEnumerable<object> output, object notFoundValue)
         {
             if (input == null || output == null)
             {
@@ -47,7 +48,7 @@ namespace Formula
             return output.ElementAt(index);
         }
 
-        public static object? Lookup(object? value, IEnumerable<object>? input, IEnumerable<object>? output)
+        public static object? Lookup(object value, IEnumerable<object> input, IEnumerable<object> output)
         {
             return Lookup(value, input, output);
         }

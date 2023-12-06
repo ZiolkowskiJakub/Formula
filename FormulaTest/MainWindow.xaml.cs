@@ -1,5 +1,6 @@
-﻿using System.Windows;
-using Formula;
+﻿using Formula;
+using System.Collections.Generic;
+using System.Windows;
 
 namespace FormulaTest
 {
@@ -15,14 +16,9 @@ namespace FormulaTest
 
         private void Button_Test1_Click(object sender, RoutedEventArgs e)
         {
-            Test_1();
-        }
-
-        private void Test_1()
-        {
-            List<Formula.Expression>? expressions = null;
-            string? text = null;
-            Command? command = null;
+            List<Formula.Expression> expressions = null;
+            string text = null;
+            Command command = null;
 
             //text = "=IF(\"AB)\"; \"C;D\"; \"AAA{}AA\") + 10  + [AAAA] + AND(2 + 5; \"{sss}\"; {\"A\"; 10; 11})";
 
@@ -60,7 +56,6 @@ namespace FormulaTest
             //    }
             //}
 
-            FormulaCalculator formulaManager = new FormulaCalculator();
             //text = "=UPPER(\"aaa\")";
             //text = "=[ZONE AREA] * 2 * {1.05, 1.10}";
             //text = "=IF(2<1; [ZONE AREA] * 10; 20)";
@@ -68,7 +63,7 @@ namespace FormulaTest
             text = "=LOOKUP(UPPER([FLOOR COVERING]); UPPER({\"Thin natural stone\", \"Thick natural stone\"}); {1.05 * [ZONE AREA], 1.10 * [ZONE AREA]}; 0)";
 
             command = Create.Command(text);
-            if(command.TryGetValue(new TestObject(), out object result))
+            if (command.TryGetValue(new TestObject(), out object result))
             {
 
             }

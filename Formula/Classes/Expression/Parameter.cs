@@ -1,4 +1,6 @@
-﻿namespace Formula
+﻿using System.Collections.Generic;
+
+namespace Formula
 {
 
     public class Parameter : Expression
@@ -9,7 +11,7 @@
 
         }
 
-        public string? Name
+        public string Name
         {
             get
             {
@@ -17,7 +19,7 @@
             }
         }
 
-        private string? GetName()
+        private string GetName()
         {
             if(string.IsNullOrEmpty(Text) || Text.Length < 3)
             {
@@ -26,12 +28,12 @@
             return Text.Substring(1, Text.Length - 2);
         }
 
-        public override List<Expression?>? GetExpressions()
+        public override List<Expression> GetExpressions()
         {
             return null;
         }
 
-        public override bool TryGetValue(IFormulaObject formulaObject, out object? result)
+        public override bool TryGetValue(IFormulaObject formulaObject, out object result)
         {
             result = null;
             if(formulaObject == null)

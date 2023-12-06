@@ -4,7 +4,7 @@ namespace Formula
 {
     public static partial class Query
     {
-        public static bool TryParse(this string? value, out object? result)
+        public static bool TryParse(this string value, out object result)
         {
             if (value == null)
             {

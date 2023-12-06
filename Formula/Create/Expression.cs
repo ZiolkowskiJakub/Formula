@@ -2,7 +2,7 @@
 {
     public static partial class Create
     {
-        public static Expression? Expression(string? @in, out string? @out)
+        public static Expression Expression(string @in, out string @out)
         {
             string? expressionString = Query.Value(@in, out @out, out ExpressionType expressionType);
             if (string.IsNullOrWhiteSpace(expressionString))
@@ -10,7 +10,7 @@
                 return null;
             }
 
-            Expression? result = null;
+            Expression result = null;
             switch (expressionType)
             {
                 case ExpressionType.Formula:
@@ -33,7 +33,7 @@
             return result;
         }
 
-        public static Expression? Expression(string? text)
+        public static Expression Expression(string text)
         {
             string? text_Temp = text?.Trim();
             if(string.IsNullOrWhiteSpace(text_Temp))
@@ -41,7 +41,7 @@
                 return null;
             }
 
-            Expression? result = Expression(text_Temp, out string? @out);
+            Expression result = Expression(text_Temp, out string @out);
             if(result == null)
             {
                 return null;

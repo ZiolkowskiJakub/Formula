@@ -1,4 +1,6 @@
-﻿namespace Formula
+﻿using System.Linq;
+
+namespace Formula
 {
     public static partial class Query
     {

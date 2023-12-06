@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Linq;
 
 namespace Formula
 {
@@ -36,7 +37,7 @@ namespace Formula
             return result;
         }
 
-        public static int Count(object? @object, out bool isEnumerable)
+        public static int Count(object @object, out bool isEnumerable)
         {
             isEnumerable = false;
             if(@object == null)

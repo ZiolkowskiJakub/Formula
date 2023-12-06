@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Collections.Generic;
+using System.Reflection;
 
 namespace Formula
 {
@@ -6,7 +7,7 @@ namespace Formula
     {
         private static FormulaCalculator formulaCalculator = new FormulaCalculator();
 
-        public static bool TryGetValue(string name, List<object?>? parameters, out object? value)
+        public static bool TryGetValue(string name, List<object> parameters, out object value)
         {
             return formulaCalculator.TryGetValue(name, parameters, out value);
         }

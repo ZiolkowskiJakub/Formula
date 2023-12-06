@@ -2,7 +2,7 @@
 {
     public static partial class Create
     {
-        public static Command? Command(string text)
+        public static Command Command(string text)
         {
             if(string.IsNullOrWhiteSpace(text))
             {

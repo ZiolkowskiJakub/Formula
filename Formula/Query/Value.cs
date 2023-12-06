@@ -4,7 +4,7 @@ namespace Formula
 {
     public static partial class Query
     {
-        public static string? Value(string? @in, out string? @out, out ExpressionType expressionType)
+        public static string Value(string @in, out string @out, out ExpressionType expressionType)
         {
             @out = null;
             expressionType = global::Formula.ExpressionType.Undefined;

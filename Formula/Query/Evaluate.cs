@@ -1,10 +1,11 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 
 namespace Formula
 {
     public static partial class Query
     {
-        public static object? Evaluate(object? @object)
+        public static object Evaluate(object @object)
         {
             if(@object == null)
             {
@@ -30,10 +31,10 @@ namespace Formula
             
             if(@object is IEnumerable)
             {
-                List<object?> result = new List<object?>();
-                foreach(object? @object_Temp in (IEnumerable)@object)
+                List<object> result = new List<object>();
+                foreach(object @object_Temp in (IEnumerable)@object)
                 {
-                    object? object_Result = @object_Temp;
+                    object object_Result = @object_Temp;
                     if (@object_Temp is string)
                     {
                         try

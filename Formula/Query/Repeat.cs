@@ -1,17 +1,18 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 
 namespace Formula
 {
     public static partial class Query
     {
-        public static List<object?>? Repeat(object? @object, int count)
+        public static List<object> Repeat(object? @object, int count)
         {
             if(count == -1)
             {
                 return null;
             }
 
-            List<object?>? result = new List<object?>();
+            List<object> result = new List<object>();
             if (count == 0)
             {
                 return result;
@@ -23,7 +24,7 @@ namespace Formula
             }
             else
             {
-                foreach(object? @object_Temp in (IEnumerable)@object)
+                foreach(object @object_Temp in (IEnumerable)@object)
                 {
                     result.Add(object_Temp);
                 }

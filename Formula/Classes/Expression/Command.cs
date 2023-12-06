@@ -1,4 +1,6 @@
-﻿namespace Formula
+﻿using System.Collections.Generic;
+
+namespace Formula
 {
     public class Command : Expression
     {
@@ -8,7 +10,7 @@
 
         }
 
-        public override List<Expression?>? GetExpressions()
+        public override List<Expression> GetExpressions()
         {
             if(string.IsNullOrWhiteSpace(Text)|| Text.Length < 1)
             {
@@ -20,17 +22,17 @@
             return Create.Expressions(text_Temp);
         }
 
-        public override bool TryGetValue(IFormulaObject formulaObject, out object? result)
+        public override bool TryGetValue(IFormulaObject formulaObject, out object result)
         {
             result = null;
 
-            List<Expression?>? expressions = GetExpressions();
+            List<Expression> expressions = GetExpressions();
             if (expressions == null)
             {
                 return Query.TryParse(Text, out result);
             }
 
-            List<object?>? values = expressions.Values(formulaObject);
+            List<object> values = expressions.Values(formulaObject);
 
             if(! Query.TryGetValue(values, out result))
             {

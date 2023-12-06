@@ -8,6 +8,5 @@
         Title="MainWindow" Height="300" Width="200">
     <Grid>
         <Button x:Name="Button_Test1" Content="Test 1" Margin="10,10,10,0" VerticalAlignment="Top" HorizontalAlignment="Stretch" Click="Button_Test1_Click"/>
-
     </Grid>
 </Window>

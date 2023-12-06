@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+﻿using System.Collections.Generic;
 
 namespace Formula
 {
@@ -36,7 +36,7 @@ namespace Formula
             return Text.Substring(0, index);
         }
 
-        public override List<Expression?>? GetExpressions()
+        public override List<Expression> GetExpressions()
         {
             int index_Start;
 
@@ -50,8 +50,8 @@ namespace Formula
                     return null;
                 }
 
-                Expression? expression = Create.Expression(Text.Substring(index_Start + 1, index_End - index_Start - 1));
-                return expression == null ? null : new List<Expression?>() { expression };
+                Expression expression = Create.Expression(Text.Substring(index_Start + 1, index_End - index_Start - 1));
+                return expression == null ? null : new List<Expression>() { expression };
             }
 
             index_Start = Text.IndexOf(Operator.Formula_Start, 0, true);
@@ -65,15 +65,15 @@ namespace Formula
             return Create.Expressions(text_Temp, Operator.Formula_Start, Operator.Formula_End, Operator.Formula_Separartor);
         }
 
-        public override bool TryGetValue(IFormulaObject formulaObject, out object? result)
+        public override bool TryGetValue(IFormulaObject formulaObject, out object result)
         {
-            List<Expression?>? expressions = GetExpressions();
+            List<Expression> expressions = GetExpressions();
             if (expressions == null)
             {
                 return Query.TryParse(Text, out result);
             }
 
-            List<object?>? values = expressions.Values(formulaObject);
+            List<object> values = expressions.Values(formulaObject);
 
             return CommandManager.TryGetValue(Name, values, out result);
         }

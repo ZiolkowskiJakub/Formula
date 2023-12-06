@@ -1,10 +1,12 @@
 ﻿
 
+using System.Collections.Generic;
+
 namespace Formula
 {
     public static partial class Query
     {
-        public static bool TryGetValue(this IEnumerable<object?>? values, out object? result)
+        public static bool TryGetValue(this IEnumerable<object> values, out object result)
         {
             result = null;
 
@@ -13,12 +15,12 @@ namespace Formula
                 return false;
             }
 
-            List<object?> values_Temp = new List<object?>();
+            List<object> values_Temp = new List<object>();
             int max = -1;
             bool hasEnumerable = false;
-            foreach (object? value_Temp in values)
+            foreach (object value_Temp in values)
             {
-                int count = Query.Count(value_Temp, out bool isEnumerable);
+                int count = Count(value_Temp, out bool isEnumerable);
                 if (isEnumerable)
                 {
                     hasEnumerable = true;
@@ -38,18 +40,18 @@ namespace Formula
                 return true;
             }
 
-            List<List<object?>?> lists = new List<List<object?>?>();
+            List<List<object>> lists = new List<List<object>>();
             for (int i = 0; i < values_Temp.Count; i++)
             {
-                List<object?>? list = Repeat(values_Temp[i], max);
+                List<object> list = Repeat(values_Temp[i], max);
                 lists.Add(list);
             }
 
-            values_Temp = new List<object?>();
+            values_Temp = new List<object>();
             for (int i = 0; i < max; i++)
             {
-                List<object?> values_Updated = new List<object?>();
-                foreach (List<object?>? list in lists)
+                List<object> values_Updated = new List<object>();
+                foreach (List<object> list in lists)
                 {
                     values_Updated.Add(list?[i]);
                 }

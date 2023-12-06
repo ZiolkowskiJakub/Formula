@@ -2,7 +2,7 @@
 {
     public static partial class Formulas
     {
-        public static object? If(object? value, object? @true, object? @false)
+        public static object If(object value, object @true, object @false)
         {
             if(value == null)
             {

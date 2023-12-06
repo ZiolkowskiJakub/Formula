@@ -1,22 +1,24 @@
-﻿namespace Formula
+﻿using System.Collections.Generic;
+
+namespace Formula
 {
     public static partial class Create
     {
-        public static List<Expression?>? Expressions(string text)
+        public static List<Expression> Expressions(string text)
         {
             if(string.IsNullOrWhiteSpace(text))
             {
                 return null;
             }
             
-            List<Expression>? result = null;
+            List<Expression> result = null;
 
-            string? @out = null;
+            string @out = null;
 
-            string? @in = text;
+            string @in = text;
             do
             {
-                Expression? expression = Expression(@in, out @out);
+                Expression expression = Expression(@in, out @out);
                 if (expression == null)
                 {
                     break;
@@ -36,9 +38,9 @@
             return result;
         }
 
-        public static List<Expression?>? Expressions(string text, char start, char end, char separator)
+        public static List<Expression> Expressions(string text, char start, char end, char separator)
         {
-            List<Expression?>? result = new List<Expression?>();
+            List<Expression> result = new List<Expression?>();
 
             int index_Separator;
 
@@ -63,7 +65,7 @@
 
                 string expressionString = text_Temp.Substring(0, index_Separator);
 
-                Expression? expression_Temp = Expression(expressionString);
+                Expression expression_Temp = Expression(expressionString);
                 if (expression_Temp != null)
                 {
                     result.Add(expression_Temp);
