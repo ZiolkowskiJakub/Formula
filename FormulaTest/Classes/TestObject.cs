@@ -13,7 +13,7 @@ namespace FormulaTest
                     return true;
 
                 case "FLOOR COVERING":
-                    value = "Thin natural stone";
+                    value = "Thin natural tiles";
                     return true;
             }
 

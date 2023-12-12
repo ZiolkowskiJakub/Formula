@@ -60,7 +60,11 @@ namespace FormulaTest
             //text = "=[ZONE AREA] * 2 * {1.05, 1.10}";
             //text = "=IF(2<1; [ZONE AREA] * 10; 20)";
             //text = "=[ZONE AREA] * LOOKUP([FLOOR COVERING]; {\"Thin natural stone\", \"Thick natural stone\"}; {1.05, 1.10}; 0)";
-            text = "=LOOKUP(UPPER([FLOOR COVERING]); UPPER({\"Thin natural stone\", \"Thick natural stone\"}); {1.05 * [ZONE AREA], 1.10 * [ZONE AREA]}; 0)";
+            //text = "=LOOKUP(UPPER([FLOOR COVERING]); UPPER({\"Thin natural stone\", \"Thick natural stone\"}); {1.05 * [ZONE AREA], 1.10 * [ZONE AREA]}; 0)";
+
+            text = "= 2 * [ZONE AREA] * IF(OR(EQUALS([FLOOR COVERING]; \"Thin natural stone\"); OR(EQUALS([FLOOR COVERING]; \"Thick natural stone\"); EQUALS([FLOOR COVERING]; \"AAA\"))); 1.05; 1)";
+
+            text = "=IF(OR(CONTAINS([FLOOR COVERING]; \"stone\"); CONTAINS([FLOOR COVERING]; \"tiles\")); 1.05; 0)";
 
             command = Create.Command(text);
             if (command.TryGetValue(new TestObject(), out object result))

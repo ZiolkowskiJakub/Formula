@@ -56,6 +56,9 @@
     <Compile Include="Classes\Expression\Parameter.cs" />
     <Compile Include="Classes\FormulaCalculator.cs" />
     <Compile Include="Classes\FormulaObject.cs" />
+    <Compile Include="Classes\Formulas\And.cs" />
+    <Compile Include="Classes\Formulas\Contains.cs" />
+    <Compile Include="Classes\Formulas\Or.cs" />
     <Compile Include="Classes\Formulas\Equals.cs" />
     <Compile Include="Classes\Formulas\If.cs" />
     <Compile Include="Classes\Formulas\Lookup.cs" />
@@ -79,6 +82,7 @@
     <Compile Include="Query\Repeat.cs" />
     <Compile Include="Query\TryCalculate.cs" />
     <Compile Include="Query\TryGetValue.cs" />
+    <Compile Include="Query\TryConvert.cs" />
     <Compile Include="Query\TryParse.cs" />
     <Compile Include="Query\ValidFormulaName.cs" />
     <Compile Include="Query\Value.cs" />

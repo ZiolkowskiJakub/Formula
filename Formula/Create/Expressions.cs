@@ -63,9 +63,25 @@ namespace Formula
 
                 } while (index_Separator != -1 && count_Start != count_End);
 
+                Expression expression_Temp = null;
+
+                if (index_Separator == -1)
+                {
+                    if(!string.IsNullOrWhiteSpace(text_Temp))
+                    {
+                        expression_Temp = Expression(text_Temp);
+                        if (expression_Temp != null)
+                        {
+                            result.Add(expression_Temp);
+                        }
+                    }
+
+                    break;
+                }
+
                 string expressionString = text_Temp.Substring(0, index_Separator);
 
-                Expression expression_Temp = Expression(expressionString);
+                expression_Temp = Expression(expressionString);
                 if (expression_Temp != null)
                 {
                     result.Add(expression_Temp);

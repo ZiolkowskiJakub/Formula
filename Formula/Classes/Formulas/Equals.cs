@@ -6,10 +6,15 @@
         {
             if(value_1 == null && value_2 == null)
             {
-                return null;
+                return true;
             }
 
-            return value_1 == value_2;
+            if(value_1 == null || value_2 == null)
+            {
+                return false;
+            }
+
+            return value_1.Equals(value_2);
         }
 
     }
