@@ -1,97 +1,22 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{15F72C03-AC41-4755-A8E2-32383ABBCE33}</ProjectGuid>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Formula</RootNamespace>
-    <AssemblyName>Formula</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <Deterministic>true</Deterministic>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
   <PropertyGroup>
     <LangVersion>9.0</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <AssemblyTitle>Formula</AssemblyTitle>
+    <Product>Formula</Product>
+    <Copyright>Copyright ©  2023</Copyright>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NCalc, Version=1.3.8.0, Culture=neutral, PublicKeyToken=973cde3f1cafed03, processorArchitecture=MSIL">
-      <HintPath>..\packages\ncalc.1.3.8\lib\NCalc.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\CommandManager.cs" />
-    <Compile Include="Classes\Expression\Array.cs" />
-    <Compile Include="Classes\Expression\Command.cs" />
-    <Compile Include="Classes\Expression\Expression.cs" />
-    <Compile Include="Classes\Expression\Formula.cs" />
-    <Compile Include="Classes\Expression\Operation.cs" />
-    <Compile Include="Classes\Expression\Parameter.cs" />
-    <Compile Include="Classes\FormulaCalculator.cs" />
-    <Compile Include="Classes\FormulaObject.cs" />
-    <Compile Include="Classes\Formulas\And.cs" />
-    <Compile Include="Classes\Formulas\Contains.cs" />
-    <Compile Include="Classes\Formulas\Or.cs" />
-    <Compile Include="Classes\Formulas\Equals.cs" />
-    <Compile Include="Classes\Formulas\If.cs" />
-    <Compile Include="Classes\Formulas\Lookup.cs" />
-    <Compile Include="Classes\Formulas\Upper.cs" />
-    <Compile Include="Create\Command.cs" />
-    <Compile Include="Create\Expression.cs" />
-    <Compile Include="Create\Expressions.cs" />
-    <Compile Include="Enums\ExpressionType.cs" />
-    <Compile Include="Interfaces\IFormulaObject.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Query\Count.cs" />
-    <Compile Include="Query\AllEnumerables.cs" />
-    <Compile Include="Query\CountEquals.cs" />
-    <Compile Include="Query\EndsWith.cs" />
-    <Compile Include="Query\StartsWith.cs" />
-    <Compile Include="Query\Evaluate.cs" />
-    <Compile Include="Query\ExpressionType.cs" />
-    <Compile Include="Query\IndexOf.cs" />
-    <Compile Include="Query\MethodInfos.cs" />
-    <Compile Include="Query\Quoted.cs" />
-    <Compile Include="Query\Repeat.cs" />
-    <Compile Include="Query\TryCalculate.cs" />
-    <Compile Include="Query\TryGetValue.cs" />
-    <Compile Include="Query\TryConvert.cs" />
-    <Compile Include="Query\TryParse.cs" />
-    <Compile Include="Query\ValidFormulaName.cs" />
-    <Compile Include="Query\Value.cs" />
-    <Compile Include="Query\Values.cs" />
-    <Compile Include="Variables\Operators.cs" />
+    <PackageReference Include="ncalc" Version="1.3.8" />
   </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
